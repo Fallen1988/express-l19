@@ -41,7 +41,8 @@ module.exports = (models, { config }) => {
     generateAccessToken,
     signIn);
 
-  api.post('/sign-up', signUp(models, { config }),
+  api.post('/sign-up',
+    signUp(models, { config }),
     passport.authenticate('local', { session: false, scope: [] }), // sign In after sign Up
     generateAccessToken,
     signIn);

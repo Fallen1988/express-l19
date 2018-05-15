@@ -8,4 +8,4 @@ const get = ({ Question }, { config }) => async (req, res, next) => {
   }
 };
 
-module.exports= { get };
+module.exports = { get };

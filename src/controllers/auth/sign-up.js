@@ -1,18 +1,17 @@
 const { NotAcceptable } = require('rest-api-errors');
 const { PASSWORD } = require('../../utils/regexes');
 
-const signUp = ({ User }) => (req, res, next) => {
+const signUp = ({User}) => (req, res, next) => {
   const { email, password, profile } = req.body;
-
   if (!PASSWORD.test(password)) {
     return next(new NotAcceptable(406, 'Password is in wrong format.'));
   }
 
   const user = new User({
-    email: email,
+    email,
     profile,
   });
-
+  //console.log('User: ', user);
   User.register(user, password, (err, user) => {
     if (err) {
       return next(err);
